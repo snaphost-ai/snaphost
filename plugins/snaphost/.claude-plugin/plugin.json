@@ -1,0 +1,16 @@
+{
+  "name": "snaphost",
+  "displayName": "SnapHost",
+  "version": "1.3.0",
+  "description": "Publish, update, and share SnapHost sites from your AI over MCP: /snaphost:connect, :workspace, :publish, :update, :share, and :data. Installing also connects the server.",
+  "author": {
+    "name": "SnapHost"
+  },
+  "homepage": "https://snaphost.ai/developers/skills",
+  "keywords": [
+    "snaphost",
+    "mcp",
+    "publishing",
+    "sharing"
+  ]
+}

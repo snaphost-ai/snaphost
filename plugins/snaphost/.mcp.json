@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "snaphost": {
+      "type": "http",
+      "url": "https://app.snaphost.ai/api/mcp"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "snaphost",
+  "owner": {
+    "name": "SnapHost"
+  },
+  "description": "The official SnapHost plugin: publish, update, and share sites from your AI over MCP.",
+  "plugins": [
+    {
+      "name": "snaphost",
+      "source": "./plugins/snaphost",
+      "description": "Connect, publish, update, and share SnapHost sites from your AI over MCP."
+    }
+  ]
+}

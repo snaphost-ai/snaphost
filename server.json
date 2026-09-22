@@ -1,0 +1,27 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ai.snaphost/snaphost",
+  "title": "SnapHost",
+  "description": "Publish a page or site as a private, shareable live website with a stable link.",
+  "version": "1.3.0",
+  "websiteUrl": "https://snaphost.ai/docs/mcp-server",
+  "repository": {
+    "url": "https://github.com/snaphost-ai/snaphost",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://snaphost.ai/android-chrome-512x512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://app.snaphost.ai/api/mcp"
+    }
+  ]
+}
