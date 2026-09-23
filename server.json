@@ -3,7 +3,7 @@
   "name": "ai.snaphost/snaphost",
   "title": "SnapHost",
   "description": "Publish a page or site as a private, shareable live website with a stable link.",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "websiteUrl": "https://snaphost.ai/docs/mcp-server",
   "repository": {
     "url": "https://github.com/snaphost-ai/snaphost",

@@ -17,9 +17,10 @@ URL, visibility, or allowlist.
    not regenerate it from scratch, so wording, structure, and styling are preserved.
 4. Save with `update_site` (the site id) passing the edited bundle: `html` for a single
    document (the safe default at any size), or an `upload_id` from `create_bundle_upload` for
-   a multi-file rebuild (PUT the .zip to its `upload_url` first). `zipBase64` is a last resort for a
-   small multi-file bundle; never base64 a single document, and never retry a base64 payload
-   that was rejected, switch route instead.
+   a multi-file rebuild (send the .zip first, with `upload_bundle_part` on this connection or
+   a PUT to its `upload_url` where your shell can reach that host). `zipBase64` is a last
+   resort for a small multi-file bundle; never base64 a single document, and never retry a
+   base64 payload that was rejected, switch route instead.
 5. Confirm: the share URL is unchanged and anyone already viewing it is offered the new
    version with a Refresh button. Mention you can roll back via `list_versions` + `rollback_site`.
 
