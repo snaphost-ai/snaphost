@@ -9,7 +9,10 @@ Pro; a `plan_limit` error means the owner needs to upgrade.
 
 ## Adding a ready-made feature (the fast path)
 
-1. Identify the site (a site id, or resolve by title with `list_sites`).
+1. Identify the site (a site id, or resolve by title with `list_sites`). Sites are looked up
+   per workspace: unless one was chosen this session, call `list_workspaces` and, with more
+   than one workspace or a `note`, run `/snaphost:workspace` and pass its `workspace_id`
+   on every call here.
 2. List the templates with `list_data_recipes` (contact form, waitlist/email signup, RSVP,
    guestbook, shared counter, clock-in, leaderboard). Pick the one matching what the user asked for.
 3. Call `apply_data_template` with the site id and recipe id. It provisions the collection (its

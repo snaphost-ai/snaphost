@@ -7,7 +7,10 @@ Use this skill to manage who can view a SnapHost site and how the link behaves.
 
 ## Steps
 
-1. Identify the site (a site id, or resolve by title with `list_sites`).
+1. Identify the site (a site id, or resolve by title with `list_sites`). Sites are looked up
+   per workspace: unless one was chosen this session, call `list_workspaces` and, with more
+   than one workspace or a `note`, run `/snaphost:workspace` and pass its `workspace_id`
+   on every call here.
 2. Apply the change the user asked for:
    - **Public vs private**: `set_visibility` with `public` (anyone with the link) or
      `allowlist` (verified viewers only).

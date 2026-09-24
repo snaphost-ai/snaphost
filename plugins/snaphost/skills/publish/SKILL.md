@@ -12,7 +12,13 @@ notebook, a bundle) to SnapHost as a live site with a stable, shareable link.
    If it is a folder/bundle, zip it (entry document at the root, e.g. `index.html`).
 2. Choose a stable, human `slug` derived from the title (e.g. "Q3 Investor Update" →
    `q3-investor-update`). The slug makes publishing idempotent.
-3. Call `publish_site` with a `title`, the `slug`, and the bundle. For a single document use
+3. Unless a workspace was already chosen in this session, call `list_workspaces`. If it returns
+   more than one workspace, or a `note`, run `/snaphost:workspace` to choose one, then come
+   back here: a publish without a `workspace_id` is refused on such a connection, and the
+   personal space is usually not where a team's sites live. Pass the chosen `workspace_id` on
+   every call below, the upload calls included: an upload belongs to the workspace it was
+   created in.
+4. Call `publish_site` with a `title`, the `slug`, and the bundle. For a single document use
    `html`, whatever its size. For a multi-file app (a built Vite/React site, an image-heavy
    page) call `create_bundle_upload` first, send the .zip against the `upload_id` it returns,
    then pass that `upload_id` instead. Size is not a concern. Two ways to send it:
@@ -28,7 +34,10 @@ notebook, a bundle) to SnapHost as a live site with a stable, shareable link.
    route is unaffected, and nobody needs to change a network setting. Reach for `zipBase64`
    only for a small multi-file bundle as a last resort: base64 has to be emitted byte for byte,
    and a long string often is not, so it is checked and rejected when it does not verify.
-4. Report the returned `share_url` to the user. Tell them the link is stable: re-running
+5. Check the `Workspace:` line of the result. If the site landed in the wrong workspace, publish
+   it again with the right `workspace_id` and `delete_site` the stray copy: a site cannot be
+   moved between workspaces, and the stray copy is live until deleted.
+6. Report the returned `share_url` to the user. Tell them the link is stable: re-running
    this skill with the same slug updates the same site in place, and anyone already viewing
    is offered a Refresh to the new version.
 

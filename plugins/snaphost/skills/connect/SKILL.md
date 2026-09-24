@@ -22,8 +22,7 @@ step at a time, and never hand the user a list of actions to do at once.
 
 ## Steps
 
-1. Call `list_sites`. If it returns anything (even an empty list), you are already connected;
-   go to step 4.
+1. Call `list_workspaces`. If it returns anything, you are already connected; go to step 4.
 2. If SnapHost's tools are not available at all, the server is not registered yet. Register it
    one of these ways, then have the user fully quit and reopen Claude:
 
@@ -43,8 +42,14 @@ step at a time, and never hand the user a list of actions to do at once.
    URL, present it as one step: put the raw `https://…` URL on its own line and tell the user to
    **click Authorize** (the connection lasts until they revoke it). The credential is then
    negotiated machine-to-machine; no token ever enters the chat.
-4. Confirm with `list_sites`. An empty list means it works (no sites yet); offer
-   `/snaphost:publish`. A populated list means you're connected. Tell the user they're ready.
+4. Confirm with `list_workspaces`: it proves the connection AND shows its reach. The connection
+   belongs to the person and covers their personal space plus every workspace they are a member
+   of, whichever workspace was open when they authorized. Show the user what came back.
+   - More than one workspace, or a `note` in the result: hand off to `/snaphost:workspace`
+     before doing anything else, so work lands where the user means it to (a write without a
+     `workspace_id` is refused on such a connection; an unnamed read is the personal space).
+   - Exactly one workspace: call `list_sites` in it. An empty list means it works (no sites
+     yet); offer `/snaphost:publish`. Tell the user they're ready.
 
 ## If the Authorize page errors
 

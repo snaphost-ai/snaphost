@@ -1,7 +1,7 @@
 {
   "name": "snaphost",
   "displayName": "SnapHost",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Publish, update, and share SnapHost sites from your AI over MCP: /snaphost:connect, :workspace, :publish, :update, :share, and :data. Installing also connects the server.",
   "author": {
     "name": "SnapHost"

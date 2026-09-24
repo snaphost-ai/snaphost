@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "ai.snaphost/snaphost",
   "title": "SnapHost",
-  "description": "Publish a page or site as a private, shareable live website with a stable link.",
-  "version": "1.4.0",
+  "description": "Send a live, private link to a client from Claude. Updates in place, viewers by email.",
+  "version": "1.5.0",
   "websiteUrl": "https://snaphost.ai/docs/mcp-server",
   "repository": {
     "url": "https://github.com/snaphost-ai/snaphost",

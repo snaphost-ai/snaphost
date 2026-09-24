@@ -8,8 +8,12 @@ URL, visibility, or allowlist.
 
 ## Steps
 
-1. Determine the target site. If the user gave a site id, use it. Otherwise call
-   `list_sites` and match by title, confirming the right one with the user if ambiguous.
+1. Determine the target site. Unless a workspace was already chosen in this session, call
+   `list_workspaces`; with more than one workspace, or a `note`, run `/snaphost:workspace`
+   and pass its `workspace_id` on every call here. If the user gave a site id, use it.
+   Otherwise call `list_sites` and match by title, confirming the right one with the user if
+   ambiguous. A site that is not listed is in another workspace: sites are looked up per
+   workspace, so pick the right one rather than concluding it is gone.
 2. Fetch the current content with `get_site_content` (the site id). It returns the entry
    document: `content` as UTF-8 text for HTML/Markdown, or base64 for binary, with
    `encoding` telling you which.
