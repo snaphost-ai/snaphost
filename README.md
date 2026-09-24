@@ -54,6 +54,15 @@ These files are generated from the SnapHost application and refreshed by
 description changes. Please open issues for problems with the listing or the plugin; the server's
 source is not in this repository.
 
+## Listed on
+
+- Official MCP registry: `ai.snaphost/snaphost`, https://registry.modelcontextprotocol.io/v0.1/servers/ai.snaphost%2Fsnaphost/versions/latest
+- Smithery: https://smithery.ai/servers/snaphost/snaphost
+- Glama: https://glama.ai/mcp/connectors/ai.snaphost/snaphost
+- npm: https://www.npmjs.com/package/snaphost
+
+[![smithery badge](https://smithery.ai/badge/snaphost/snaphost)](https://smithery.ai/servers/snaphost/snaphost)
+
 ## Links
 
 - Docs: https://snaphost.ai/docs/mcp-server and https://snaphost.ai/docs/skills
