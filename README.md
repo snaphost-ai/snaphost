@@ -22,7 +22,7 @@ npx snaphost connect
 /plugin install snaphost@snaphost
 ```
 
-**Cursor**: [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=snaphost&config=eyJ1cmwiOiJodHRwczovL2FwcC5zbmFwaG9zdC5haS9hcGkvbWNwIn0=)
+**Cursor**: install the **SnapHost** plugin from the Cursor Marketplace, or [Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=snaphost&config=eyJ1cmwiOiJodHRwczovL2FwcC5zbmFwaG9zdC5haS9hcGkvbWNwIn0=)
 
 **VS Code**: [Install in VS Code](vscode:mcp/install?%7B%22name%22%3A%22snaphost%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapp.snaphost.ai%2Fapi%2Fmcp%22%7D)
 
@@ -47,6 +47,7 @@ annotations is at https://snaphost.ai/docs/mcp-server.
 
 - `server.json`: the entry published to the [official MCP registry](https://registry.modelcontextprotocol.io) as `ai.snaphost/snaphost`.
 - `.claude-plugin/marketplace.json` and `plugins/snaphost/`: the Claude Code plugin marketplace.
+- `.cursor-plugin/plugin.json`: the same plugin as a Cursor Marketplace listing, sharing `plugins/snaphost/skills/`.
 - `glama.json`: maintainers for the Glama listing.
 
 These files are generated from the SnapHost application and refreshed by
