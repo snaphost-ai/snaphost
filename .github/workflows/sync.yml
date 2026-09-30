@@ -41,13 +41,18 @@ jobs:
           rm -rf .claude-plugin plugins
           cp -R /tmp/plugin/snaphost/.claude-plugin .claude-plugin
           cp -R /tmp/plugin/snaphost/plugins plugins
+          # The Cursor manifest joined the archive after the first deployments; mirror it once served.
+          if [ -d /tmp/plugin/snaphost/.cursor-plugin ]; then
+            rm -rf .cursor-plugin
+            cp -R /tmp/plugin/snaphost/.cursor-plugin .cursor-plugin
+          fi
           python3 -c 'import json; json.dump(json.load(open("/tmp/server.json")), open("server.json","w"), indent=2); open("server.json","a").write("\n")'
 
       - name: Commit if anything changed
         id: commit
         run: |
           set -euo pipefail
-          git add -A .claude-plugin plugins server.json
+          git add -A .claude-plugin .cursor-plugin plugins server.json
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "unchanged"
