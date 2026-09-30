@@ -15,7 +15,7 @@
     "sharing",
     "hosting"
   ],
-  "logo": "https://snaphost.ai/android-chrome-512x512.png",
+  "logo": "./logo.png",
   "skills": "./plugins/snaphost/skills",
   "mcpServers": {
     "snaphost": {
