@@ -3,13 +3,19 @@ name: publish
 description: "Publish the current document to SnapHost as a live, shareable site."
 ---
 
-Use this skill to publish something the user just built (an HTML file, a report, a
-notebook, a bundle) to SnapHost as a live site with a stable, shareable link.
+Use this skill to publish something the user just built or has to hand (an HTML file, a
+report, a notebook, a Word document, a slide deck, a spreadsheet, a PDF, an image, a
+bundle) to SnapHost as a live site with a stable, shareable link.
 
 ## Steps
 
 1. Identify the document to publish. If it is a single self-contained HTML file, read it.
-   If it is a folder/bundle, zip it (entry document at the root, e.g. `index.html`).
+   If it is a folder/bundle, zip it (entry document at the root, e.g. `index.html`). A single
+   file that is not HTML (Markdown, a notebook, a PDF, a .docx/.pptx/.xlsx, a CSV, an image,
+   a video, an audio, a Mermaid diagram or a text file, or a single React component as a
+   .tsx/.jsx with a default export) is sent as it is: see step 4. A component may import
+   only react, react-dom, recharts, lucide-react, d3, framer-motion and @radix-ui/react-*;
+   rewrite any other import (a local `./component`, a UI kit) into the file before sending it.
 2. Choose a stable, human `slug` derived from the title (e.g. "Q3 Investor Update" →
    `q3-investor-update`). The slug makes publishing idempotent.
 3. Unless a workspace was already chosen in this session, call `list_workspaces`. If it returns
@@ -18,8 +24,17 @@ notebook, a bundle) to SnapHost as a live site with a stable, shareable link.
    personal space is usually not where a team's sites live. Pass the chosen `workspace_id` on
    every call below, the upload calls included: an upload belongs to the workspace it was
    created in.
-4. Call `publish_site` with a `title`, the `slug`, and the bundle. For a single document use
-   `html`, whatever its size. For a multi-file app (a built Vite/React site, an image-heavy
+4. Call `publish_site` with a `title`, the `slug`, and the bundle. For a single HTML document
+   use `html`, whatever its size. For a single file of any other kind, call
+   `create_bundle_upload` with `filename` (its real name, extension included), send the
+   file's own bytes against the `upload_id` it returns, and pass that `upload_id` so it is
+   rendered as its kind. A Word, PowerPoint or Excel file is shown as its page alone: readers
+   can download the file itself only when `include_original` is true, since it holds speaker
+   notes, hidden sheets, formulas and comments the page does not show; ask the user before
+   turning that on. A workbook you wrote with a library carries no computed values, so its
+   formula cells show the formulas; the result says so in `render_notices`. Relay every
+   render notice to the user, and offer to open and save the file in Excel or Numbers first
+   when values matter. For a multi-file app (a built Vite/React site, an image-heavy
    page) call `create_bundle_upload` first, send the .zip against the `upload_id` it returns,
    then pass that `upload_id` instead. Size is not a concern. Two ways to send it:
    - `upload_bundle_part`, one numbered slice per call (split the .zip into slices of at most

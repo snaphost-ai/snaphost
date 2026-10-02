@@ -15,8 +15,15 @@ URL, visibility, or allowlist.
    ambiguous. A site that is not listed is in another workspace: sites are looked up per
    workspace, so pick the right one rather than concluding it is gone.
 2. Fetch the current content with `get_site_content` (the site id). It returns the entry
-   document: `content` as UTF-8 text for HTML/Markdown, or base64 for binary, with
-   `encoding` telling you which.
+   document: `content` as UTF-8 text for HTML/text, or base64 for binary, with
+   `encoding` telling you which. A site rendered from a file (its `content_kind` is
+   markdown, notebook, document, presentation, spreadsheet, pdf, image, video, audio,
+   diagram, text or component) returns its rendered
+   page, which is not the thing to edit: change the source file and send it again with
+   `update_site` the way /snaphost:publish sends it (`upload_id` plus `filename`), so the
+   site keeps its kind. When `get_site` reports `original_included` true, the file itself
+   is fetched with `get_site_content` and `original: true`. A new version keeps the live
+   version's download choice unless `include_original` says otherwise.
 3. Apply the user's requested change to that content. Edit the real current document; do
    not regenerate it from scratch, so wording, structure, and styling are preserved.
 4. Save with `update_site` (the site id) passing the edited bundle: `html` for a single
