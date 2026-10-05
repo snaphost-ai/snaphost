@@ -1,7 +1,7 @@
 {
   "name": "snaphost",
   "description": "Publish, update, and share SnapHost sites from Cursor over MCP. Installing connects the hosted server; your browser opens once to authorize.",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "author": {
     "name": "SnapHost"
   },

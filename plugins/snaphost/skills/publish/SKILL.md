@@ -61,6 +61,9 @@ bundle) to SnapHost as a live site with a stable, shareable link.
 - New sites default to private (allowlist) on Pro. Use `/snaphost:share` to open it
   up or add viewers.
 - To change an existing site instead of creating a new one, use `/snaphost:update`.
+- Building a report, a presentation or a dashboard rather than publishing one that exists? Use
+  `/snaphost:report`, `/snaphost:presentation` or `/snaphost:dashboard`: they follow the
+  workspace brand kit and SnapHost's design guide.
 - A multi-file app gets client-side routing for free: clean routes like `/about` deep-link
   and survive a refresh. Build with `BrowserRouter` and a relative base (`base: './'`), and
   derive the router basename from the injected `<base>` tag (`document.querySelector('base')`).

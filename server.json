@@ -3,7 +3,7 @@
   "name": "ai.snaphost/snaphost",
   "title": "SnapHost",
   "description": "Send a live, private link to a client from Claude. Updates in place, viewers by email.",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "websiteUrl": "https://snaphost.ai/docs/mcp-server",
   "repository": {
     "url": "https://github.com/snaphost-ai/snaphost",
