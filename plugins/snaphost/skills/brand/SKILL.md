@@ -24,9 +24,16 @@ and how the brand writes. The person brings the brand; you do the extracting.
      drawn inline in the page's HTML, the `<svg>` markup itself for `logo_svg`. A logo that only
      exists as a JPEG or a photo is uploaded on the workspace's Brand page instead; say so and
      save the kit once that is done;
-   - the language and locale (`is`, `is-IS`), a few sentences of tone, and any words to avoid.
+   - the language and locale (`is`, `is-IS`), a few sentences of tone, and any words to avoid;
+   - the look, five choices each from a small set: `radius` (sharp, soft or round, from the
+     buttons and cards), `density` (airy, regular or dense, from the white space), `emphasis`
+     (calm or bold headlines, from the display type), `cover` (dark, light or split, from the hero) and
+     `surfaces` (tinted panels or ruled sections, from how the site boxes its content). These
+     are what make two customers' pages look different before any AI choice; say which you read
+     and which you guessed.
 4. **Confirm.** Show the proposed kit as a table with each colour's hex and role, the fonts, the
-   logo URL and the locale. Point out anything you guessed. Wait for a yes.
+   logo URL, the locale and the five look choices in plain words. Point out anything you
+   guessed. Wait for a yes.
 5. **Save** with `set_brand_kit`. Relay every warning (low contrast is the usual one) and offer a
    corrected colour.
 6. **Use it.** Offer to rebuild one existing page with the kit, or to start a report with

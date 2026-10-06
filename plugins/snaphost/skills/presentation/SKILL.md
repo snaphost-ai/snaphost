@@ -37,8 +37,12 @@ the chat, or an existing page.
    summary of four numbers. Reach a shorter deck by merging views, never by dropping the
    comparisons. Every data slide has a sentence headline, a lede, one visual, its comparison and
    a source line, in two columns on desktop, and one control where it adds understanding (a view
-   toggle, a one-off toggle, hover values), each a button with `aria-pressed`. Speaker notes go
-   in the hidden notes aside. A headline, a lone number and a sentence is not a slide.
+   toggle, a one-off toggle, hover values), each a button with `aria-pressed`. Choose each
+   slide's layout from the shell's vocabulary by its content shape (grid, split, chart, compare,
+   statement, quote, list); never give two consecutive data slides the same layout, and open with
+   the cover treatment the kit's `style.cover` names. The subject decides the shape: the guide
+   names five. Speaker notes go in the hidden notes aside. A headline, a lone number and a
+   sentence is not a slide.
 7. **Review loop, before publishing.** Score the page against every rubric item in the guide, in
    writing, as pass or fail, at 375, 768 and 1280 pixels wide (and in print preview when
    printable). Fix every failure, then score again. If you can render the page (a browser or
