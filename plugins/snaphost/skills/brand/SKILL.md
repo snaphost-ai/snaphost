@@ -1,6 +1,6 @@
 ---
 name: brand
-description: "Set up or update the workspace's brand kit (colours, fonts, logo, locale, tone) from a brand guideline or website, so every page your AI builds is on brand."
+description: "Set up or update the workspace's brand kit (colours, fonts, logo, locale, tone, and the brand guidelines themselves) from a brand guideline or website, so every page your AI builds is on brand."
 ---
 
 Use this skill to give a SnapHost workspace its brand kit, once, so every page, report, deck and
@@ -25,6 +25,10 @@ and how the brand writes. The person brings the brand; you do the extracting.
      exists as a JPEG or a photo is uploaded on the workspace's Brand page instead; say so and
      save the kit once that is done;
    - the language and locale (`is`, `is-IS`), a few sentences of tone, and any words to avoid;
+   - the guideline itself, when it lives at a public https URL (a page on their site or a
+     PDF): saved with `set_brand_guidelines`, it is read on every build for what the kit's
+     fields cannot hold. A guideline handed over as a file has no link to save; the owner
+     uploads it on the workspace's General page instead. Only the workspace owner may set it;
    - the look, five choices each from a small set: `radius` (sharp, soft or round, from the
      buttons and cards), `density` (airy, regular or dense, from the white space), `emphasis`
      (calm or bold headlines, from the display type), `cover` (dark, light or split, from the hero) and
@@ -32,7 +36,7 @@ and how the brand writes. The person brings the brand; you do the extracting.
      are what make two customers' pages look different before any AI choice; say which you read
      and which you guessed.
 4. **Confirm.** Show the proposed kit as a table with each colour's hex and role, the fonts, the
-   logo URL, the locale and the five look choices in plain words. Point out anything you
+   logo URL, the guidelines link if any, the locale and the five look choices in plain words. Point out anything you
    guessed. Wait for a yes.
 5. **Save** with `set_brand_kit`. Relay every warning (low contrast is the usual one) and offer a
    corrected colour.
@@ -46,3 +50,6 @@ and how the brand writes. The person brings the brand; you do the extracting.
 - A kit with Google fonts hands pages `fontLinkHtml` to paste into `<head>`.
 - A kit with Google fonts has those fonts allowed on every page it publishes.
 - The kit can also be edited on the workspace's Brand page in the dashboard.
+- Brand guidelines are set apart from the kit (`set_brand_guidelines`, or an upload on the
+  General page), checked once, and read by the AI on every build through `get_brand_kit`, so
+  the owner's latest guideline is what pages follow.

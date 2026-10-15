@@ -22,7 +22,11 @@ the chat, or an existing page.
    workspace or a `note`, run `/snaphost:workspace` and pass its `workspace_id` on every call.
 4. **Brand.** Call `get_brand_kit`. With a kit, paste its `tokens_css` first in the page's
    style block and its `fontLinkHtml` (when present) into `<head>`, use its logo URL, its
-   fonts, its locale and its tone. With none, offer
+   fonts, its locale and its tone. When the answer carries `guidelines` (with or without a
+   kit), read that page or PDF before building and follow it where the kit is silent (logo
+   placement, imagery, charts, how the brand speaks); where it contradicts the kit's colours,
+   fonts or look, the kit wins. If the link cannot be read, say so once and build from the kit.
+   With no kit, offer
    `/snaphost:brand` once ("I can set up your brand from your guideline or website so every
    page matches"); if they decline, use the neutral palette in the guide and carry on.
 5. **Guide.** Call `get_design_guide` again with the traits the brief settled on, and read all
