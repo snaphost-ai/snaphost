@@ -26,7 +26,7 @@ Use this skill to manage who can view a SnapHost site and how the link behaves.
 
 ## Notes
 
-- Private sharing, allowlists, passwords, and setting a link expiry are Pro
-  features; if a call returns a `plan_limit` error, tell the user which plan unlocks it.
-  Clearing a password or an expiry works on every plan.
+- Private sharing is on every plan. Email entries work on every plan (a Free page can name up to 3 people, Pro has no limit); domain entries need Pro. Passwords and setting a link
+  expiry are Pro features; if a call returns a `plan_limit` error, tell the user
+  which plan unlocks it. Clearing a password or an expiry works on every plan.
 - Visibility, allowlist, and password changes never change the share URL.
