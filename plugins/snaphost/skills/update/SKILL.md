@@ -43,4 +43,11 @@ URL, visibility, or allowlist.
 
 - `get_site_content` is the read half of the round-trip; always read before you write so
   you patch the live document rather than overwrite it blindly.
+- A website ("update our website"): call `list_websites` for the site id, then follow the
+  `update_site` description: `changes` with `base` "live" and the `content_hash` you read as
+  `base_content_hash`, which is required. Never send the whole site to change a page. For larger
+  work send `preview: true`: only after the person says yes does `set_live_version` put it live.
+  If `list_websites` shows a `waiting_preview` saved by someone else, ask the person, then pass
+  `replace_preview` true; a `stale` preview cannot go live, so discard it and make the change
+  again.
 - The token is configured on the MCP connection; never request or paste it.

@@ -12,6 +12,8 @@ and how the brand writes. The person brings the brand; you do the extracting.
 1. **Workspace.** Call `list_workspaces` and, with more than one, run `/snaphost:workspace`. The
    kit belongs to a team workspace on a paid plan, and only an owner or admin may save it.
 2. **What exists.** Call `get_brand_kit`. If a kit exists, show it and ask what should change.
+   A kit with `pending: true` was saved before the workspace's guidelines last changed: read
+   `guidelines.url` as the source in step 3 and propose the kit it calls for.
 3. **Find the brand.** Ask for whichever they have, best first: a brand guideline (PDF), their
    website, or a screenshot of a page they consider on brand. Read it and extract:
    - colours for every role: primary, primaryStrong (a darker primary for hover and links),
@@ -21,9 +23,10 @@ and how the brand writes. The person brings the brand; you do the extracting.
      font that is neither becomes its nearest Google Fonts match, said out loud);
    - the logo and a small mark or emblem: an https URL of a PNG, SVG or WebP file on their site
      (open the site's HTML to find the real file, not a page that shows it), or, when the logo is
-     drawn inline in the page's HTML, the `<svg>` markup itself for `logo_svg`. A logo that only
-     exists as a JPEG or a photo is uploaded on the workspace's Brand page instead; say so and
-     save the kit once that is done;
+     drawn inline in the page's HTML, the `<svg>` markup itself for `logo_svg`. A logo you cannot
+     reach as a file (it sits inside a guideline PDF, or only exists as a JPEG or a photo) does
+     not hold the kit back: save the kit without it, and tell the person to upload the logo on
+     the workspace's Brand page. Pages set the brand name in type until then;
    - the language and locale (`is`, `is-IS`), a few sentences of tone, and any words to avoid;
    - the guideline itself, when it lives at a public https URL (a page on their site or a
      PDF): saved with `set_brand_guidelines`, it is read on every build for what the kit's
@@ -36,10 +39,13 @@ and how the brand writes. The person brings the brand; you do the extracting.
      are what make two customers' pages look different before any AI choice; say which you read
      and which you guessed.
 4. **Confirm.** Show the proposed kit as a table with each colour's hex and role, the fonts, the
-   logo URL, the guidelines link if any, the locale and the five look choices in plain words. Point out anything you
+   logo URL (or that the kit starts without a logo), the guidelines link if any, the locale and the five look choices in plain words. Point out anything you
    guessed. Wait for a yes.
-5. **Save** with `set_brand_kit`. Relay every warning (low contrast is the usual one) and offer a
-   corrected colour.
+5. **Save** with `set_brand_kit`, after `set_brand_guidelines` when there is a guidelines link
+   to save: the kit saved last is the one confirmed against the guidelines, and a kit older than
+   its guidelines shows as pending. Save a pending kit even when nothing in it had to change;
+   the save is what ends the pending state. Relay every warning (low contrast is the usual one)
+   and offer a corrected colour.
 6. **Use it.** Offer to rebuild one existing page with the kit, or to start a report with
    `/snaphost:report`.
 

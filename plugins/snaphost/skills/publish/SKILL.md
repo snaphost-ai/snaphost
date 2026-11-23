@@ -76,3 +76,20 @@ bundle) to SnapHost as a live site with a stable, shareable link.
 - A multi-file app gets client-side routing for free: clean routes like `/about` deep-link
   and survive a refresh. Build with `BrowserRouter` and a relative base (`base: './'`), and
   derive the router basename from the injected `<base>` tag (`document.querySelector('base')`).
+
+## Publishing a website
+
+A website is a site on the person's own domain: public, and changed only by its editors and the
+workspace owners. Only an owner makes one: `add_custom_domain` with `mode` "website" (and
+`listed` false to ask search engines to skip it); for a domain already added as a shared-page
+address of the site, call it again with the same `host`. Confirm first, in words: it moves the
+site to the root of the Shared drive, removes every viewer and workspace share, makes it public,
+and the domain can only ever serve a website from then on. It needs a team workspace on a paid
+plan and an HTML site. When building one:
+
+- Ship a `404.html` for unknown paths, and keep existing paths so old links still work.
+- Put the shared header and footer in `_partials/` and include them from each page with
+  `<!--#include file="_partials/header.html" -->`.
+- Register the form's collection with `set_collection_access` and `notify` true, so a
+  submission reaches the editors.
+- To change a website that exists, see `/snaphost:update`.

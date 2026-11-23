@@ -26,6 +26,8 @@ the chat, or an existing page.
    kit), read that page or PDF before building and follow it where the kit is silent (logo
    placement, imagery, charts, how the brand speaks); where it contradicts the kit's colours,
    fonts or look, the kit wins. If the link cannot be read, say so once and build from the kit.
+   A kit with `pending: true` was saved before the guidelines last changed: build from it, say
+   so once and offer `/snaphost:brand` to update it.
    With no kit, offer
    `/snaphost:brand` once ("I can set up your brand from your guideline or website so every
    page matches"); if they decline, use the neutral palette in the guide and carry on.
