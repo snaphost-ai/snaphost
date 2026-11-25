@@ -88,8 +88,34 @@ and the domain can only ever serve a website from then on. It needs a team works
 plan and an HTML site. When building one:
 
 - Ship a `404.html` for unknown paths, and keep existing paths so old links still work.
+- When an address moves, or the website replaces an older one, add a `_redirects` file at the
+  root: one rule per line, `/old-address /new-address`, answered with a 301 unless a `302`,
+  `307` or `308` follows. `/blog/* /news/:splat` sends everything under a path, and a
+  destination may be a full `https://` address. A source matches with or without its trailing
+  slash, the first matching line wins, and a page or file that exists always answers its own
+  address, so a rule only acts where the site has nothing. Do not build forwarding pages (a meta
+  refresh with a canonical link) for this. A line that is not a rule is skipped, and the publish
+  result says which.
+- Put images, fonts, CSS and scripts in the bundle and name them with plain addresses
+  (`/img/team.jpg`): a website serves its own files with a fingerprint so browsers keep them,
+  and draws its JPEG, PNG and WebP images in AVIF or WebP at the size shown. Upload one full-size original and do
+  not pre-shrink it. An `<img>` with a `width` (the size it is shown at) and no `class`,
+  `id`, `style` or `sizes` is served at that width and twice it. Give a styled image a
+  `sizes` (`sizes="(min-width: 960px) 50vw, 100vw"`) and its original's pixel `width` and
+  `height`, and SnapHost writes its `srcset`; do not write one yourself. An image loaded from
+  another site gets none of this. `data-snaphost-original` on an `<img>` keeps that one image
+  exactly as uploaded.
+- Write share and canonical addresses from the site's root, not with a domain:
+  `<meta property="og:image" content="/img/share.jpg">`, `<link rel="canonical" href="/about/">`
+  and the `url`, `logo` and `image` of JSON-LD. The website writes them out on the domain it is
+  served on, so the files keep working when the domain changes.
 - Put the shared header and footer in `_partials/` and include them from each page with
   `<!--#include file="_partials/header.html" -->`.
 - Register the form's collection with `set_collection_access` and `notify` true, so a
   submission reaches the editors.
+- When the person wants the messages in a mailbox ("send them to inbound@pson.is"), pass
+  `forward_to` with the whole list of addresses. It takes only mailboxes on the website's own
+  domain (pson.is or www.pson.is takes anything@pson.is), and they receive from the next message
+  with nothing to confirm. For an address anywhere else (Gmail, another company) say so and
+  offer to add that person as an editor instead (`add_website_editor`).
 - To change a website that exists, see `/snaphost:update`.

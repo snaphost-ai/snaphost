@@ -42,7 +42,9 @@ The injected SDK is global and needs no keys; every call returns a promise.
 - **Render safely**: write values with `textContent`, never `innerHTML`.
 - **Access mode** (`set_collection_access`): `public_read` (anyone can read: a guestbook or
   counter) or `append_only` (visitors write but only the owner reads: a contact form or
-  waitlist; submissions are never readable by other visitors). You can also pause writes.
+  waitlist; submissions are never readable by other visitors). You can also pause writes,
+  have each new record emailed to the people who run the site (`notify`), and on a website send
+  it to mailboxes on the website's own domain (`forward_to`).
   Publish/update scans the page's code and pre-configures new collections to match it (one the
   page `query()`s becomes `public_read`, one it only `append()`s to stays `append_only`) and
   reports what it did in the tool result; an owner's explicit setting is never overridden.
