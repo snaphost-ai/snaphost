@@ -114,8 +114,11 @@ plan and an HTML site. When building one:
 - Register the form's collection with `set_collection_access` and `notify` true, so a
   submission reaches the editors.
 - When the person wants the messages in a mailbox ("send them to inbound@pson.is"), pass
-  `forward_to` with the whole list of addresses. It takes only mailboxes on the website's own
+  `forward_to` with the whole list of addresses. It takes mailboxes on the website's own
   domain (pson.is or www.pson.is takes anything@pson.is), and they receive from the next message
-  with nothing to confirm. For an address anywhere else (Gmail, another company) say so and
-  offer to add that person as an editor instead (`add_website_editor`).
+  with nothing to confirm. A website on a subdomain (new.pson.is) also takes its parent
+  (tandri@pson.is) once the parent holds the TXT record `list_site_collections` shows in
+  `forward_parent_domain`: give the person that record to add, then set the list again.
+  For an address anywhere else (Gmail, another company) say so and offer to add that person
+  as an editor instead (`add_website_editor`).
 - To change a website that exists, see `/snaphost:update`.
